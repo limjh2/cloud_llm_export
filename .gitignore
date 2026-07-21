@@ -1,0 +1,11 @@
+.trismegistus-local/
+claude_memory
+__pycache__/
+*.pyc
+
+# Private provider payloads and collection-specific intake/output.
+exports/
+/inbox/*
+!/inbox/README.md
+/output/*
+!/output/README.md

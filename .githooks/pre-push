@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+zero=0000000000000000000000000000000000000000
+
+while read -r local_ref local_sha remote_ref remote_sha
+do
+    if [ "$local_sha" = "$zero" ]; then
+        continue
+    fi
+    case "$local_ref" in
+        refs/heads/local/*)
+            echo "BLOCKED: private local/* branches must never be pushed." >&2
+            exit 1
+            ;;
+    esac
+    python scripts/audit_public_tree.py --history "$local_sha"
+done
