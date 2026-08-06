@@ -1,0 +1,7 @@
+# Deliverables belong to the user, who keeps, moves, or deletes them freely.
+# They are not project state, so they are not tracked. Only this file and the
+# README that explains the folder are — the README is also what keeps the
+# folder present in a fresh clone, since git cannot track an empty directory.
+*
+!.gitignore
+!README.md

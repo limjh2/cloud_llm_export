@@ -1,11 +1,11 @@
-.trismegistus-local/
-claude_memory
 __pycache__/
 *.pyc
 
-# Private provider payloads and collection-specific intake/output.
+# Temporary trismegistus kit. It is re-copyable formwork, not template
+# structure, and never enters public history.
+/trismegistus/
+
+# Private provider payloads. Intake and output are ignored by their own
+# folder-local .gitignore files, which travel with those folders when this
+# template is instantiated.
 exports/
-/inbox/*
-!/inbox/README.md
-/output/*
-!/output/README.md

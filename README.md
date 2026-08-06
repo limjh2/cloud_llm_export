@@ -11,12 +11,16 @@ a separate local-only repository with independent history and no remote.
 
 ## Instantiate privately
 
-1. Copy this structure into a separate local project.
+1. Copy this structure into a separate local project, including the
+   folder-local `inbox/.gitignore` and `output/.gitignore`.
 2. Initialize independent Git history on a `local/library` branch and remove
    every remote.
-3. Place complete deliveries in `exports/<provider>/YYYY-MM-DD/`.
+3. Place complete deliveries in `exports/<provider>/YYYY-MM-DD/`, staging a
+   delivery in `staging/` while it is being examined.
 4. Add one row per set to `EXPORTS.tsv`.
 5. Run `python scripts/build_manifest.py` and `python scripts/validate.py`.
+6. Keep the instance's own `MEMORY.md`, `decisions/`, and `workshop/`; none of
+   their contents ever travels back to this template.
 
 Never turn a filled clone into the public repository. See `AGENTS.md` and
 `PUBLIC_TEMPLATE.md` for the publication boundary.

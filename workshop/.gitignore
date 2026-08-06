@@ -1,0 +1,5 @@
+# Half-thoughts too raw to earn their own idea file yet. Local and untracked,
+# but not off-limits — read and work in it freely. Promote a scratch note by
+# giving it a real idea file in the workshop.
+scratch/*
+!scratch/.gitkeep

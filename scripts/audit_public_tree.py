@@ -10,14 +10,26 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ALLOWED_PATHS = {
+# The structure the current template must contain, checked only against the tip
+# of whatever is being audited.
+REQUIRED_PATHS = {
     ".githooks/pre-push", ".gitignore", "AGENTS.md", "DECISION_LOG.md",
-    "EXPORTS.tsv", "FILE_MANIFEST.tsv", "FORMAT.md", "MEMORY_PROTOCOL.md",
-    "PROJECT_BRIEF.md", "PROJECT_STATUS.md", "PUBLIC_TEMPLATE.md",
-    "README.md", "ROADMAP.md", "TRISMEGISTUS.md", "inbox/README.md",
-    "output/README.md", "scripts/audit_public_tree.py",
-    "scripts/build_manifest.py", "scripts/validate.py",
+    "EXPORTS.tsv", "FILE_MANIFEST.tsv", "FORMAT.md", "HANDOFF_PROTOCOL.md",
+    "MEMORY.md", "PROJECT_BRIEF.md", "PROJECT_STATUS.md",
+    "PUBLIC_TEMPLATE.md", "README.md", "ROADMAP.md", "TRISMEGISTUS.md",
+    "decisions/README.md", "inbox/.gitignore", "inbox/README.md",
+    "output/.gitignore", "output/README.md", "scripts/audit_public_tree.py",
+    "scripts/build_manifest.py", "scripts/validate.py", "staging/README.md",
+    "workshop/.gitignore", "workshop/README.md", "workshop/_TEMPLATE.md",
+    "workshop/scratch/.gitkeep",
 }
+# Paths that were structural in earlier commits and are no longer part of the
+# template. They stay permissible so that auditing history does not fail every
+# commit made before the structure changed.
+HISTORICAL_PATHS = {"MEMORY_PROTOCOL.md"}
+# No commit, past or present, may track anything outside this union. This is the
+# check that enforces the publication boundary.
+ALLOWED_PATHS = REQUIRED_PATHS | HISTORICAL_PATHS
 EXPECTED_TSV = {
     "EXPORTS.tsv": b"provider\texport_date\trelative_path\tfile_count\tsize_bytes\tnotes\n",
     "FILE_MANIFEST.tsv": b"relative_path\tsize_bytes\tsha256\n",
@@ -49,10 +61,10 @@ def read(commit: str | None, path: str) -> bytes:
     return (ROOT / path).read_bytes() if commit is None else git("show", f"{commit}:{path}")
 
 
-def audit(label: str, commit: str | None) -> list[str]:
+def audit(label: str, commit: str | None, require_structure: bool = True) -> list[str]:
     paths = paths_for(commit)
     problems: list[str] = []
-    missing = sorted(ALLOWED_PATHS - paths)
+    missing = sorted(REQUIRED_PATHS - paths) if require_structure else []
     extra = sorted(paths - ALLOWED_PATHS)
     if missing:
         problems.append(f"{label}: required structural files missing: {missing}")
@@ -98,7 +110,11 @@ def main() -> int:
     else:
         revision = args.history or "HEAD"
         commits = git("rev-list", revision).decode().splitlines()
-        problems = [problem for commit in commits for problem in audit(commit, commit)]
+        problems = [
+            problem
+            for index, commit in enumerate(commits)
+            for problem in audit(commit, commit, require_structure=index == 0)
+        ]
         scope = f"{len(commits)} commit(s) reachable from {revision}"
     for problem in problems:
         print(f"PROBLEM: {problem}", file=sys.stderr)

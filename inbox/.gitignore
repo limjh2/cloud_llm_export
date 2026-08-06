@@ -1,0 +1,8 @@
+# The inbox is a drop point, not project state. Its contents are transient by
+# definition: material waiting to be integrated, not something the project is.
+# Only this file and the README that explains the folder are tracked — the
+# README is also what keeps the folder present in a fresh clone, since git
+# cannot track an empty directory.
+*
+!.gitignore
+!README.md

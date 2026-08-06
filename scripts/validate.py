@@ -18,8 +18,9 @@ DATE_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}$")
 REQUIRED = {
     ".gitignore", "AGENTS.md", "README.md", "PROJECT_BRIEF.md",
     "PROJECT_STATUS.md", "ROADMAP.md", "DECISION_LOG.md", "FORMAT.md",
-    "TRISMEGISTUS.md", "MEMORY_PROTOCOL.md", "EXPORTS.tsv",
-    "FILE_MANIFEST.tsv", "inbox/README.md", "output/README.md",
+    "TRISMEGISTUS.md", "MEMORY.md", "HANDOFF_PROTOCOL.md", "EXPORTS.tsv",
+    "FILE_MANIFEST.tsv", "inbox/README.md", "staging/README.md",
+    "output/README.md", "decisions/README.md", "workshop/README.md",
     "scripts/build_manifest.py", "scripts/validate.py",
 }
 
@@ -122,7 +123,7 @@ def main() -> int:
 
     pending = [
         path for path in (ROOT / "inbox").rglob("*")
-        if path.is_file() and path.name != "README.md"
+        if path.is_file() and path.name not in {"README.md", ".gitignore"}
     ]
     if pending:
         problems.append(f"pending inbox intake: {len(pending)} file(s)")
