@@ -248,26 +248,28 @@ In a filled instance:
 
 ## trismegistus Assimilation
 
-The copied `trismegistus/` folder atrophies **part by part**: each part is
-removed once this project has taken over its function, as an ordinary commit,
-recorded as one line in the `TRISMEGISTUS.md` Atrophy Log. The kit is gitignored
-here, so its removal leaves no diff — the Atrophy Log is the only record.
+This project is **fully assimilated**: no copied `trismegistus/` folder remains,
+and this file plus the other permanent parts carry everything the kit supplied.
+The `TRISMEGISTUS.md` Atrophy Log is the record of what was removed and when —
+the kit is gitignored here, so its removal left no diff and nothing else records
+it.
 
-Two things hold across every removal: verification commands live outside the kit
-(`python scripts/validate.py` and `python scripts/audit_public_tree.py`), and
-`ROADMAP.md` exists with real work in it — whether still `Proposed` or already
-written up. A concrete next slice is *not* required; the two-step rule above
-defers that deliberately.
+These are the permanent parts. They belong at the project root and are never
+removed: `TRISMEGISTUS.md`, `MEMORY.md`, `HANDOFF_PROTOCOL.md`, `inbox/`,
+`staging/`, `output/`, `workshop/`, and `decisions/`.
 
-These never go, and belong at the project root rather than inside the kit:
-`TRISMEGISTUS.md`, `inbox/`, `staging/`, `output/`, `workshop/`, `decisions/`,
-`MEMORY.md`, `HANDOFF_PROTOCOL.md`.
+To move this project to a newer trismegistus version, follow the `UPDATING.md`
+procedure in the canonical kit workspace: re-copy the deployable kit to this
+root, read the `CHANGELOG.md` entries newer than the version in
+`TRISMEGISTUS.md`, adopt only those deltas, re-stamp, and remove the kit again.
+Keep it gitignored — no kit path has ever been tracked here. Verification lives
+outside the kit and does not change: `python scripts/validate.py` and
+`python scripts/audit_public_tree.py`.
 
-Only the last removal needs approval: run verification, commit durable state,
-and ask for explicit user approval before deleting whatever remains of the
-copied `trismegistus/` folder. The root `TRISMEGISTUS.md` stamp is not part of
-the kit folder and must be kept. To later move this project to a newer
-trismegistus version, follow the kit's `UPDATING.md`.
+Two standing conditions survive assimilation: verification commands live in this
+project rather than in any kit, and `ROADMAP.md` exists with real work in it —
+whether still `Proposed` or already written up. A concrete next slice is *not*
+required; the two-step rule above defers that deliberately.
 
 Software-only conventions the kit carries — localization and input-method
 support, desktop launchers, and GUI behaviour and verification — do not apply to

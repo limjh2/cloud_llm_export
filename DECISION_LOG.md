@@ -73,3 +73,19 @@
   check is time-dependent.
 - Consequence: A retired structural path is moved to `HISTORICAL_PATHS`, never
   deleted from the allowlist.
+
+## D007 — The copied kit is removed; the project is fully assimilated
+
+- Status: Active
+- Date: 2026-08-06
+- Decision: The `trismegistus/` kit re-supplied for the 5.1.1 upgrade was
+  deleted with owner approval once its deltas were assimilated. No kit copy is
+  kept in the repository, and none ever enters template history.
+- Rationale: The kit is temporary formwork. `AGENTS.md` carries all eleven of
+  its protocols, `HANDOFF_PROTOCOL.md` was written self-contained rather than
+  pointing into `trismegistus/templates/`, and the verification commands are the
+  project's own — so nothing load-bearing depended on the folder.
+- Consequence: Because the kit was gitignored, its deletion produced no diff.
+  The `TRISMEGISTUS.md` Atrophy Log is the only record. A future upgrade
+  re-copies the kit from the canonical workspace, reads the changelog entries
+  newer than the stamped version, and removes it again.

@@ -83,8 +83,13 @@ this non-code source collection. See `DECISION_LOG.md` D004.
 Parts of the copied `trismegistus/` folder removed as this project took over
 their function. Newest first.
 
-- [2026-08-06] Re-supplied the whole kit at 5.1.1 for this upgrade. It is
-  gitignored and untracked; removal is **pending explicit owner approval**.
+- [2026-08-06] Removed the re-supplied 5.1.1 kit in full, with owner approval,
+  once the upgrade deltas were assimilated. `AGENTS.md` carries all eleven
+  protocols, `HANDOFF_PROTOCOL.md` is self-contained, and the permanent parts
+  are all at the root. The project is fully assimilated; the kit was gitignored,
+  so this log is the only record of the removal.
+- [2026-08-06] Re-supplied the whole kit at 5.1.1 for this upgrade, gitignored
+  and untracked, to read its changelog deltas and templates.
 - [date not recorded] Removed the copied kit in one act under the pre-3.0.0
   assimilation model, before this stamp carried a log. Backfilled from the
   repository's initial state: no kit path has ever been tracked here, and the
