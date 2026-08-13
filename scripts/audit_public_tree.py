@@ -17,7 +17,7 @@ REQUIRED_PATHS = {
     "EXPORTS.tsv", "FILE_MANIFEST.tsv", "FORMAT.md", "HANDOFF_PROTOCOL.md",
     "MEMORY.md", "PROJECT_BRIEF.md", "PROJECT_STATUS.md",
     "PUBLIC_TEMPLATE.md", "README.md", "ROADMAP.md", "TRISMEGISTUS.md",
-    "decisions/README.md", "inbox/.gitignore", "inbox/README.md",
+    "decisions/README.md", "inbox/README.md",
     "output/.gitignore", "output/README.md", "scripts/audit_public_tree.py",
     "scripts/build_manifest.py", "scripts/validate.py", "staging/README.md",
     "workshop/.gitignore", "workshop/README.md", "workshop/_TEMPLATE.md",
@@ -26,7 +26,7 @@ REQUIRED_PATHS = {
 # Paths that were structural in earlier commits and are no longer part of the
 # template. They stay permissible so that auditing history does not fail every
 # commit made before the structure changed.
-HISTORICAL_PATHS = {"MEMORY_PROTOCOL.md"}
+HISTORICAL_PATHS = {"MEMORY_PROTOCOL.md", "inbox/.gitignore"}
 # No commit, past or present, may track anything outside this union. This is the
 # check that enforces the publication boundary.
 ALLOWED_PATHS = REQUIRED_PATHS | HISTORICAL_PATHS

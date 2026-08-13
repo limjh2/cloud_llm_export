@@ -28,8 +28,19 @@ Before any change, read in order:
 
 If a `trismegistus/` folder exists at the project root, it is temporary kit
 guidance — not template structure — to be absorbed into this project's own
-documents and then deleted. It is not a second front door and does not override
-this file. It is gitignored and never enters template history.
+documents and then deleted. Before scaffolding or architectural work, read its
+`AGENT_INSTRUCTIONS.md`, `README.md`, and `CHECKLIST.md`; it is not a second
+front door and does not override this file. It is gitignored and never enters
+template history.
+
+## Model Policy
+
+Read the **Model policy** convention in the root `TRISMEGISTUS.md` before
+acting. This project's model policy is **none**, meaning no class of model is
+excluded by this convention. Keep this section even when the answer is none;
+if a future stamp records a restriction, stop and let the user relaunch with an
+allowed model before continuing with any planning, tooling, documentation, or
+implementation.
 
 ## Publication boundary
 
@@ -59,11 +70,11 @@ git config core.hooksPath .githooks
 The audit is path-exact: every tracked path in every reachable commit must be
 listed in `REQUIRED_PATHS` or `HISTORICAL_PATHS` in
 `scripts/audit_public_tree.py`. That is what keeps the tracked flow folders
-(`staging/`, `decisions/`, `workshop/`) content-free here — a stray file in one
-of them fails the audit by path before its contents are ever examined. Keep the
-allowlist synchronized with intentional structural changes, and add a retired
-path to `HISTORICAL_PATHS` rather than deleting it, so auditing history still
-passes.
+(`inbox/`, `staging/`, `decisions/`, `workshop/`) content-free here — a stray
+file in one of them fails the audit by path before its contents are ever
+examined. Keep the allowlist synchronized with intentional structural changes,
+and add a retired path to `HISTORICAL_PATHS` rather than deleting it, so
+auditing history still passes.
 
 ## Private-instance model
 
@@ -98,6 +109,40 @@ In a filled instance:
   build-time decision explicitly, because the model that executes it may be
   weaker or cheaper than the one that planned it.
 - Work one approved roadmap slice at a time, scoped to its acceptance criteria.
+- A project-owned Agent Skill has one tracked canonical copy at
+  `skills/<skill-name>/SKILL.md`; create the root `skills/` directory only when
+  this project authors its first skill. Keep `.claude/`, `.codex/`, `.agents/`,
+  and `.pi/` ignored as generated harness doorways. Do not track a doorway or a
+  symlink to an absolute path outside this project. An installed external skill
+  stays canonical at its source and is reached only through an ignored,
+  regenerable pointer; never move it into `skills/` or accept a tracked fork.
+- A docket request is a generated, strictly read-only view derived from this
+  project's own instructions, memory, current state, roadmap, relevant
+  decisions, inbox and staging state, workshop context, and repository status.
+  It does not create or maintain `DOCKET.md`, a generated queue, or a tracked
+  cache, and it never changes the sources it reads.
+- “What's next?” returns one compact Next action, its reason, blocker or
+  `none`, and the smallest labeled continuation prompt when a legal advance
+  exists. If no local action can clear the blocker, say **no local next action**
+  and emit no continuation prompt. “What's on the docket?” is the full view:
+  one Next item and at most three Following items when legal work exists, plus
+  only the nonempty Owner input, Waiting, Intake, and Background sections.
+  `/docket` is an optional read-only alias where the harness supports it.
+- The six docket input labels are **Simple prompt**, **Short approval**, **Gate
+  required**, **Clarification required**, **External wait**, and **Triage
+  required**. Only an exact later prompt for a displayed item labeled Simple
+  prompt or Short approval, with no displayed blocker, can authorize work; a
+  docket request never does.
+- Keep a blocked item under Waiting when no local action can clear it. Label an
+  unchanged dependency outside this project **External wait**; do not present
+  an observational recheck or a recurring hardening pass as its unblocker.
+- Hardening is a permanent, finite practice, not a self-enqueuing queue item.
+  Start a new `H###` run only for a new release or material change, a user
+  symptom, new evidence from a named dependency, or an explicit owner request.
+  Completion of the prior run is not a trigger.
+- A saved docket is a new point-in-time artifact under `output/`, marked with
+  its generation time, repository state, and inspected source paths. It is not
+  this project's source of truth, and an upgrade does not create one.
 - Keep the tooling dependency-free and compatible with both an empty template
   and a filled local instance.
 - Update `ROADMAP.md`, `PROJECT_STATUS.md`, and `DECISION_LOG.md` when status or
@@ -105,6 +150,32 @@ In a filled instance:
 - A slice is done only when acceptance criteria are met, verification has run,
   durable documents are updated, any needed decision entry exists, a coherent
   commit is made, and the next step is clear.
+
+## Standing Goals
+
+A **standing goal** is a bounded instruction that remains in force across the
+turns of an unattended run. It is optional here; this project currently has no
+standing goal, but the protocol remains so an authorized multi-turn sequence
+cannot be mistaken for an open-ended instruction.
+
+A standing goal has five normative elements:
+
+1. **Outcome** — the concrete result that ends the run.
+2. **Scope** — the already-written-up roadmap slice or ordered slice sequence
+   and the project documents that govern it; it never invents slice details.
+3. **Bounds** — what the executor must not touch or decide, including adjacent
+   slices, workshop and inbox material, prohibited cleanup, and owner gates.
+4. **Verify** — the checks that prove the outcome and each slice's acceptance
+   criteria, including user-visible behaviour where one exists.
+5. **Report** — the evidence returned and when the executor stops; multi-slice
+   work reports after every slice and at the final outcome or bound.
+
+Root instructions, the model policy, written slices, and owner gates outrank a
+standing goal. When a goal contradicts one, stop and report the conflict. A
+multi-slice goal is sequenced, not merged: implement, verify, document, commit,
+publish if required, and report each slice before starting the next. A report is
+a checkpoint, not an approval gate unless the slice or goal names a hard owner
+gate; an automatic continuation cannot stand in for that answer.
 
 ## Git Workflow
 
@@ -115,6 +186,10 @@ In a filled instance:
   own branch-and-PR default.
 - "Commit completed slices" means local commits; it does not imply a branch or a
   PR.
+- **Never run `git clean -fdx`.** This project holds material that is untracked
+  by design in `output/` and `workshop/scratch/`; git cannot restore it. Delete
+  specific files by name, and remove build artifacts with a project command or
+  by naming the build directories.
 - Pushing is governed by the publication boundary above, which is stricter than
   the ordinary solo-main default: a filled instance has no remote and is never
   pushed at all, and this template is pushed only after both checks pass.
@@ -134,7 +209,10 @@ In a filled instance:
 - Do not delete inbox material unless the project instructions explicitly allow
   it. Move processed files to their proper destination and update any metadata,
   index, log, or manifest that tracks file placement.
-- Inbox contents are local-only and must never enter template history.
+- `inbox/` and its contents are tracked in a filled local instance. Arriving
+  material is often the only copy, and an unprocessed file in `git status` is
+  the flag that says the mailbox has post. Do not add an ignore rule for pending
+  intake. This public template contains no pending intake.
 
 ## Staging Protocol
 
@@ -218,6 +296,11 @@ In a filled instance:
 - **Facts about the user personally do not go in this file.** It is tracked and
   pushable, and such a fact is the same in every repository they work in; it
   belongs to the harness's own memory or nowhere. There is no `user` type.
+- **Project facts go in this file and nowhere else.** Never write one into a
+  harness's own per-project memory store. Such a store may hold user-level
+  memory or a redirect pointing here; it may not hold a second copy of this
+  project's facts. If project facts are found there, move them here and leave a
+  redirect behind.
 - One entry per fact, newest first, with `**Why:**` and `**How to apply:**` on
   `feedback` and `project` entries, absolute dates, and `[[slug]]` links. Update
   an existing entry rather than adding a near-copy, and delete what is found to
@@ -228,6 +311,30 @@ In a filled instance:
 - `MEMORY.md` is inside the publication boundary. No entry may be
   collection-derived; a fact about a holding belongs to that instance's own
   `MEMORY.md`.
+
+## Project Index
+
+- This project does not require a root `INDEX.md`: its durable deliverable is a
+  reusable structure and verification tooling, not a collection of entries a
+  reader must navigate. `README.md` and `FORMAT.md` provide the needed
+  navigation and placement rules.
+- Keep this heading even while the answer is no. If the project's durable
+  deliverable changes into a collection of entries, add an `INDEX.md` from the
+  real listing rather than from an imagined inventory, and mark anything not
+  examined as unexamined.
+
+## Subprojects
+
+- **This project's subprojects:** **none**. No `homunculi/` or `alkahest/`
+  lane exists or is created merely by this convention.
+- A full subproject under `homunculi/<child>/` owns the files its slices change,
+  has its own permanent documents, stamp, memory, and roadmap. An alkahest under
+  `alkahest/<child>/` keeps working papers for a deliverable that remains here,
+  with no stamp, flow folders, or roadmap. A child outside those lanes is a
+  deliberate path deviation, not silent conformity.
+- If a child is added or changes ownership shape, update the parent boundary,
+  child pointer, live references, and Subproject Reciprocity result together.
+  A pointer is a link, never a link plus a copied summary.
 
 ## Session Handoffs
 
@@ -253,6 +360,12 @@ and this file plus the other permanent parts carry everything the kit supplied.
 The `TRISMEGISTUS.md` Atrophy Log is the record of what was removed and when —
 the kit is gitignored here, so its removal left no diff and nothing else records
 it.
+
+This already-stamped upgrade follows the 10.0.0 upgrade-time atrophy rule: the
+explicit request to upgrade authorizes removal of the re-supplied kit once its
+redundancy is proved by the permanent parts, verification, and the Atrophy Log.
+Permanent parts, project-owned material, and modified or unrecognized kit parts
+are never removed under that convenience.
 
 These are the permanent parts. They belong at the project root and are never
 removed: `TRISMEGISTUS.md`, `MEMORY.md`, `HANDOFF_PROTOCOL.md`, `inbox/`,

@@ -25,6 +25,19 @@ and this file is pushable. If the harness keeps its own memory, that is where
 such a fact goes; if it does not, the fact is simply not written down. Do not
 record one here to avoid losing it.
 
+**Project facts go here and nowhere else.** If a harness keeps a per-project
+memory store of its own — a directory keyed to this project's path, or any
+equivalent — do not write a project fact into it, however convenient its default
+write path is. That store is machine-local and unpushable: a fact written there
+is invisible to every other agent, to every clone, and to review. A harness
+store may hold **user-level memory**, or a **redirect** pointing here. It may
+not hold a second copy of this project's facts.
+
+The failure is silent, which is why it needs a rule rather than vigilance. Both
+files look fine on their own; nothing reports that the project's whole memory
+sits in one of them while the other is empty. If you find project facts in such
+a store, move them into this file and leave a redirect behind.
+
 **Do not store what the repository already records.** Structure, past fixes, git
 history, and anything already in the canonical documents or `AGENTS.md` do not
 belong in memory. If a reader could learn it by reading the project, it is not

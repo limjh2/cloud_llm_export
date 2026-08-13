@@ -11,8 +11,9 @@ a separate local-only repository with independent history and no remote.
 
 ## Instantiate privately
 
-1. Copy this structure into a separate local project, including the
-   folder-local `inbox/.gitignore` and `output/.gitignore`.
+1. Copy this structure into a separate local project. The inbox is tracked so
+   pending arrivals are visible and backed up; `output/.gitignore` keeps
+   owner-controlled deliverables out of history.
 2. Initialize independent Git history on a `local/library` branch and remove
    every remote.
 3. Place complete deliveries in `exports/<provider>/YYYY-MM-DD/`, staging a

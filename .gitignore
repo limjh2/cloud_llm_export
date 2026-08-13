@@ -5,7 +5,13 @@ __pycache__/
 # structure, and never enters public history.
 /trismegistus/
 
-# Private provider payloads. Intake and output are ignored by their own
-# folder-local .gitignore files, which travel with those folders when this
-# template is instantiated.
+# Generated harness doorways for installed skills. Project-owned skills belong
+# under the tracked skills/<skill-name>/ homes instead.
+/.claude/
+/.codex/
+/.agents/
+/.pi/
+
+# Private provider payloads. Pending intake is tracked; owner-controlled output
+# remains ignored by output/.gitignore when this template is instantiated.
 exports/

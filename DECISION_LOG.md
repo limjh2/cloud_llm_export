@@ -89,3 +89,30 @@
   The `TRISMEGISTUS.md` Atrophy Log is the only record. A future upgrade
   re-copies the kit from the canonical workspace, reads the changelog entries
   newer than the stamped version, and removes it again.
+
+## D008 — Trismegistus 10.1.0 upgrade applicability
+
+- Status: Active
+- Date: 2026-08-12
+- Decision: Upgrade this already-stamped template from trismegistus 5.1.1 to
+  10.1.0. Adopt tracked inbox intake, the 6.1.0 permanent-guidance catch-up,
+  the docket and trigger-based hardening rules, the project-owned skill boundary
+  with ignored harness doorways, and upgrade-time atrophy. Record **none** for
+  the model policy, standing goals, project index, and subprojects. Do not
+  create `skills/`, `INDEX.md`, `homunculi/`, or `alkahest/` without an actual
+  adopter in this template.
+- Rationale: The template has no pending intake, old handoff folder, memory
+  symlink/store, project-owned skills, child project, user interface, or
+  collection of entries that needs an index. Its durable deliverable is
+  reusable structure and verification tooling, so the index and GUI-related
+  conventions do not apply. A generated-skill doorway review found none.
+- Consequence: `inbox/.gitignore` is retired and becomes historical-only for
+  public-tree auditing; `output/` remains the sole untracked flow folder.
+  Existing self-contained `HANDOFF_PROTOCOL.md` and tracked `MEMORY.md` were
+  retained while their current guidance was checked and refreshed. The
+  re-supplied kit is removed after verification under the 10.0.0 upgrade-time
+  atrophy rule because the project already had a durable stamp and every
+  permanent function remains at the root. The post-removal Dead Pointer Review
+  found only provenance or conditional references to the former kit and no
+  actionable pointer into `templates/`, `trismegistus/`, or
+  `.trismegistus-local`.

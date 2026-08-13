@@ -123,7 +123,7 @@ def main() -> int:
 
     pending = [
         path for path in (ROOT / "inbox").rglob("*")
-        if path.is_file() and path.name not in {"README.md", ".gitignore"}
+        if path.is_file() and path.name != "README.md"
     ]
     if pending:
         problems.append(f"pending inbox intake: {len(pending)} file(s)")

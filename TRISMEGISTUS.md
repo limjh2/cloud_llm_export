@@ -1,13 +1,13 @@
 # trismegistus Provenance
 
-trismegistus-Version: 5.1.1
+trismegistus-Version: 10.1.0
 
 - **Role:** Public, content-free reference-collection template
 - **Origin archetype:** `reference_collection_foundation`, adapted for immutable
   directory-valued export sets
 - **Scaffolded:** not recorded (the original stamp carried no date, and the
   template's own audit rejects the dates involved as private-instance tokens)
-- **Last upgraded:** 2026-08-06
+- **Last upgraded:** 2026-08-12
 - **Source kit:** trismegistus deployable kit
 
 ## How To Read This
@@ -34,12 +34,22 @@ its removal leaves no diff. The Atrophy Log is the only record of it.
   steps; the write-up happens only on an explicit ask. A written-up slice
   carries every build-time decision explicitly, because the model that executes
   it may be weaker or cheaper than the one that planned it.
-- **Hardening:** a standing `H###` hardening-pass series, re-run after batches
-  of change; never retired.
+- **Hardening:** a standing, finite `H###` hardening-pass practice; a new run
+  needs a new release or material change, a user-reported symptom, new evidence
+  from a named dependency, or an explicit owner request. Completion does not
+  schedule a successor; the practice is never retired.
+- **Model policy:** **none**, meaning no class of model is excluded by this
+  convention. A future restriction would cover the whole project unless it
+  names a narrower condition.
+- **Project skills:** if this project authors an Agent Skill, its one canonical,
+  tracked copy lives at `skills/<skill-name>/SKILL.md`; create `skills/` only on
+  first use. `.claude/`, `.codex/`, `.agents/`, and `.pi/` are ignored generated
+  harness doorways. Installed external skills remain canonical at their source
+  and are reached only through an ignored, regenerable pointer; no tracked
+  symlink points to an absolute path outside this project.
 - **Inbox:** `inbox/` at the project root is the intake area; every file there
   except `README.md` is pending intake, handled per `inbox/README.md`. It is a
-  drop point, not a workspace, and is untracked except its `README.md` and
-  `.gitignore`.
+  drop point, not a workspace, and is tracked, including pending intake.
 - **Staging:** `staging/` at the project root is the tracked transit lane where
   inbox material is worked on while it is being integrated; every file in it has
   a named destination, and material leaves once integration finishes.
@@ -52,14 +62,16 @@ its removal leaves no diff. The Atrophy Log is the only record of it.
   and the evidence behind them. A filed record is finished: never edited to
   reflect a later decision, and never a replacement for the `DECISION_LOG.md`
   line.
-- **Flow-folder tracking:** git holds what a session invested work in, not what
-  is passing through — `staging/`, `workshop/`, and `decisions/` are tracked;
-  `inbox/` and `output/` are not.
+- **Flow-folder tracking:** git holds what it would cost something to lose —
+  `inbox/`, `staging/`, `workshop/`, and `decisions/` are tracked; `output/` is
+  not, because the project can produce a deliverable again.
 - **Shared agent memory:** `MEMORY.md` at the project root is the one memory
   every agent reads and edits — tracked, committed, and permanent like this
   stamp. It carries its own format rules, holds only what is not derivable from
   the project, and excludes facts about the user personally, which are the same
-  in every repository and do not belong in a pushable file.
+  in every repository and do not belong in a pushable file. Project facts go
+  here and nowhere else; a harness store may hold user-level memory or a
+  redirect, but never a second copy of this project's facts.
 - **Handoffs:** a session handoff is an ordinary `output/` file, named
   `YYYY-MM-DDTHHMMSS±HHMM-session-handoff.md` and written only on an explicit
   request; it follows the root `HANDOFF_PROTOCOL.md`, which is permanent like
@@ -73,6 +85,11 @@ its removal leaves no diff. The Atrophy Log is the only record of it.
   permanently separate. `python scripts/audit_public_tree.py` blocks
   collection-derived public state by exact path across all reachable history;
   `python scripts/validate.py` reconciles a filled local instance.
+- **Subprojects:** **none**. If a child is added later, a full subproject belongs
+  under `homunculi/<child>/` and owns its files, while an alkahest belongs under
+  `alkahest/<child>/` and keeps working papers for a deliverable that remains at
+  this root. Create neither lane merely for this declaration; one repository
+  and one parent boundary line continue throughout.
 
 Software-only conventions the kit carries — localization and input-method
 support, desktop launchers, and GUI behaviour and verification — do not apply to
@@ -83,6 +100,11 @@ this non-code source collection. See `DECISION_LOG.md` D004.
 Parts of the copied `trismegistus/` folder removed as this project took over
 their function. Newest first.
 
+- [2026-08-12] Removed the re-supplied 10.1.0 kit in full under the
+  already-stamped upgrade-time atrophy rule. The permanent parts at the root,
+  the 15 protocol headings in `AGENTS.md`, and the verification checks establish
+  redundancy; the generated skill pointer review found none. The kit was
+  gitignored and untracked, so this log is the record of its removal.
 - [2026-08-06] Removed the re-supplied 5.1.1 kit in full, with owner approval,
   once the upgrade deltas were assimilated. `AGENTS.md` carries all eleven
   protocols, `HANDOFF_PROTOCOL.md` is self-contained, and the permanent parts
@@ -97,6 +119,12 @@ their function. Newest first.
 
 ## Upgrade History
 
+- [2026-08-12] Upgraded 5.1.1 -> 10.1.0: adopted tracked inbox intake, the
+  permanent-guidance baseline catch-up, project-owned skill boundaries, the
+  docket and trigger-based hardening rules, and the 10.0.0 upgrade-time
+  atrophy branch. Reviewed **none** for model policy, standing goals, project
+  index, subprojects, and generated skill doorways; GUI, localization, and
+  desktop-launcher conventions remain inapplicable under D004.
 - [2026-08-06] Upgraded 1.7.0 -> 5.1.1: adopted 2.0.0 (folder-local `inbox/`
   and `output/` ignores, tracked `staging/` and `decisions/`, solo-main git),
   3.0.0 (atrophy model, two-step slices, this Atrophy Log), 4.0.0 (root
