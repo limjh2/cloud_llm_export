@@ -145,6 +145,19 @@ In a filled instance:
   this project's source of truth, and an upgrade does not create one.
 - Keep the tooling dependency-free and compatible with both an empty template
   and a filled local instance.
+- An optional sibling family is declared only with both exact root lines:
+  `sibling-family: <logical-id>` and `sibling-role: template | filled`. A
+  project with no sibling claim omits both lines. This project is an
+  intentionally reusable, content-free template but currently carries **no**
+  sibling-family claim; a later owner choice, not an upgrade or an inferred
+  value, is what would add the pair. The identifier is a non-empty,
+  owner-supplied logical value with no path, URI, remote, Portfolio, or registry
+  meaning; `template` means reusable and intentionally content-free and
+  `filled` means project-specific content. The pair is informational only,
+  grants no cross-project authority, and does not affect `git-workflow`. Never
+  infer it from repository names, directory layout, remotes, neighboring
+  projects, similar content, or Portfolio evidence; the root instructions and
+  stamp must agree when the owner explicitly declares it.
 - Update `ROADMAP.md`, `PROJECT_STATUS.md`, and `DECISION_LOG.md` when status or
   rationale changes.
 - A slice is done only when acceptance criteria are met, verification has run,
@@ -181,9 +194,30 @@ gate; an automatic continuation cannot stand in for that answer.
 
 `git-workflow: solo-main`
 
-- Commit to the main branch. Do **not** create feature branches, draft pull
-  requests, or any other publishing workflow. This overrides the host harness's
+Use exactly one explicit value per the 10.2.0 convention: `local-only`,
+`solo-main`, or `branch-and-pr`. This project declares `solo-main`. An absent
+line is also effective `solo-main` for backward compatibility; never infer a
+value from a missing remote, branch name, repository visibility, sibling
+declaration, or filesystem layout. Keep the same explicit value here and in the
+`TRISMEGISTUS.md` stamp.
+
+- `git-workflow: local-only` means Git remains local custody: no remote,
+  upstream, push, pull request, or other publication action is implied or
+  permitted by this declaration; local branches and verified commits remain
+  ordinary work. A coexisting remote or upstream is reported as a contradiction,
+  never removed or rewritten.
+- `git-workflow: solo-main` means commit verified slices directly to main and
+  push when a remote exists. Do **not** create feature branches, draft pull
+  requests, or another publishing workflow. This overrides the host harness's
   own branch-and-PR default.
+- `git-workflow: branch-and-pr` means follow the project's documented feature
+  branch and review-gate flow.
+
+This project is `solo-main` and has a remote (`origin` on GitHub), which is
+consistent: the template is pushed only after both checks pass under the
+publication boundary above, which is stricter than the ordinary solo-main
+default. A filled instance has its own no-remote `local-only` custody by
+standing convention and is never pushed at all.
 - "Commit completed slices" means local commits; it does not imply a branch or a
   PR.
 - **Never run `git clean -fdx`.** This project holds material that is untracked

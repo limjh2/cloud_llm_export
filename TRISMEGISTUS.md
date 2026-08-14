@@ -1,13 +1,13 @@
 # trismegistus Provenance
 
-trismegistus-Version: 10.1.0
+trismegistus-Version: 10.3.0
 
 - **Role:** Public, content-free reference-collection template
 - **Origin archetype:** `reference_collection_foundation`, adapted for immutable
   directory-valued export sets
 - **Scaffolded:** not recorded (the original stamp carried no date, and the
   template's own audit rejects the dates involved as private-instance tokens)
-- **Last upgraded:** 2026-08-12
+- **Last upgraded:** 2026-08-14
 - **Source kit:** trismegistus deployable kit
 
 ## How To Read This
@@ -76,11 +76,19 @@ its removal leaves no diff. The Atrophy Log is the only record of it.
   `YYYY-MM-DDTHHMMSS±HHMM-session-handoff.md` and written only on an explicit
   request; it follows the root `HANDOFF_PROTOCOL.md`, which is permanent like
   this stamp and self-contained.
-- **Git:** local-first; coherent commits after verified slices. The default is
-  solo-main — commit to main, with no feature branches or pull requests — but
-  pushing is subordinate to the publication boundary in `AGENTS.md`, which is
-  stricter: a filled instance has no remote at all, and this template is pushed
+- **Git:** local-first; coherent commits after verified slices. The one
+  `git-workflow` declaration has three explicit values — `local-only`,
+  `solo-main`, and `branch-and-pr`; this project declares `solo-main`, and an
+  absent line is also effective `solo-main`. The default is commit to main, with
+  no feature branches or pull requests — but pushing is subordinate to the
+  publication boundary in `AGENTS.md`, which is stricter: a filled instance has
+  no remote at all (its own `local-only` custody), and this template is pushed
   only after `scripts/validate.py` and `scripts/audit_public_tree.py` pass.
+- **Sibling family:** **none declared**. The optional paired root lines
+  `sibling-family: <logical-id>` / `sibling-role: template | filled` are absent
+  here; the pair is informational, grants no cross-project authority, and never
+  inferred from repository names, remotes, or neighbouring projects. This is a
+  deliberate absence (see D009), not a placeholder or a `none` value.
 - **Publication boundary:** public template and private collection histories are
   permanently separate. `python scripts/audit_public_tree.py` blocks
   collection-derived public state by exact path across all reachable history;
@@ -100,6 +108,10 @@ this non-code source collection. See `DECISION_LOG.md` D004.
 Parts of the copied `trismegistus/` folder removed as this project took over
 their function. Newest first.
 
+- [2026-08-14] Re-supplied the whole kit at 10.3.0 for this upgrade, gitignored
+  and untracked, to read its 10.2.0 and 10.3.0 changelog deltas and templates.
+  Its removal after verification is pending explicit owner approval per the
+  final-removal rule.
 - [2026-08-12] Removed the re-supplied 10.1.0 kit in full under the
   already-stamped upgrade-time atrophy rule. The permanent parts at the root,
   the 15 protocol headings in `AGENTS.md`, and the verification checks establish
@@ -119,6 +131,13 @@ their function. Newest first.
 
 ## Upgrade History
 
+- [2026-08-14] Upgraded 10.1.0 -> 10.3.0: adopted 10.2.0 (Git publication
+  policy made explicit — three values, existing `solo-main` preserved and
+  consistent with the project's remote) and 10.3.0 (optional path-free sibling
+  family — reviewed and deliberately left **undeclared**; no claim is
+  preserved because none existed, per the lazy opt-in rule). Both releases add
+  no protocol heading and no new project file. The re-supplied kit is removed
+  after verification under the 10.0.0 upgrade-time atrophy rule.
 - [2026-08-12] Upgraded 5.1.1 -> 10.1.0: adopted tracked inbox intake, the
   permanent-guidance baseline catch-up, project-owned skill boundaries, the
   docket and trigger-based hardening rules, and the 10.0.0 upgrade-time

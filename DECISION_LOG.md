@@ -116,3 +116,31 @@
   found only provenance or conditional references to the former kit and no
   actionable pointer into `templates/`, `trismegistus/`, or
   `.trismegistus-local`.
+
+## D009 — Trismegistus 10.3.0 upgrade applicability
+
+- Status: Active
+- Date: 2026-08-14
+- Decision: Upgrade this already-stamped template from trismegistus 10.1.0 to
+  10.3.0. Adopt the 10.2.0 explicit Git publication policy (three mutually
+  exclusive values — `local-only`, `solo-main`, `branch-and-pr`) and the 10.3.0
+  optional path-free sibling-family declaration. **Preserve `git-workflow:
+  solo-main`**: the existing declaration is valid, matches the stamp, and is
+  consistent with the project's actual remote (`origin` on GitHub) and its
+  pushable-template publication boundary. **Declare no sibling family**: the
+  project carries no `sibling-family`/`sibling-role` lines anywhere, and per the
+  10.3.0 lazy rule "preserve no claim" — an upgrade never requires a project to
+  answer this optional convention, and a `none` placeholder is forbidden.
+- Rationale: Both releases are Minor, add no protocol heading and no new project
+  file, and are deliberately opt-in. `solo-main` remains the correct description
+  of this template's Git custody: a filled instance is `local-only` by standing
+  convention (no remote, never pushed), while the template itself pushes only
+  after both verification checks pass. The sibling-family pair is informational
+  only, grants no cross-project authority, and would be inferred from nothing;
+  a later owner choice, not this upgrade, is what would add it.
+- Consequence: `AGENTS.md` now carries the three-value Git rule and the
+  sibling-family boundary while keeping the single `solo-main` declaration and
+  no sibling claim; the stamp records both. No project file, registry, or
+  protocol heading was created. The re-supplied 10.3.0 kit is removed after
+  verification under the 10.0.0 upgrade-time atrophy rule, pending the
+  final-removal owner confirmation.
