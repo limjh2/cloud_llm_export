@@ -108,10 +108,12 @@ this non-code source collection. See `DECISION_LOG.md` D004.
 Parts of the copied `trismegistus/` folder removed as this project took over
 their function. Newest first.
 
-- [2026-08-14] Re-supplied the whole kit at 10.3.0 for this upgrade, gitignored
-  and untracked, to read its 10.2.0 and 10.3.0 changelog deltas and templates.
-  Its removal after verification is pending explicit owner approval per the
-  final-removal rule.
+- [2026-08-14] Removed the re-supplied 10.3.0 kit in full under the
+  10.0.0 upgrade-time atrophy rule, with owner approval. The 10.2.0 and 10.3.0
+  deltas were assimilated into the permanent parts; `HANDOFF_PROTOCOL.md` was
+  already self-contained and a dead-pointer sweep found only provenance or
+  historical references. The kit was gitignored and untracked, so this log is
+  the record of its removal.
 - [2026-08-12] Removed the re-supplied 10.1.0 kit in full under the
   already-stamped upgrade-time atrophy rule. The permanent parts at the root,
   the 15 protocol headings in `AGENTS.md`, and the verification checks establish

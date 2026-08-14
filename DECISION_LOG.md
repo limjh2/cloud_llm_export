@@ -141,6 +141,6 @@
 - Consequence: `AGENTS.md` now carries the three-value Git rule and the
   sibling-family boundary while keeping the single `solo-main` declaration and
   no sibling claim; the stamp records both. No project file, registry, or
-  protocol heading was created. The re-supplied 10.3.0 kit is removed after
-  verification under the 10.0.0 upgrade-time atrophy rule, pending the
-  final-removal owner confirmation.
+  protocol heading was created. The re-supplied 10.3.0 kit was removed after
+  verification under the 10.0.0 upgrade-time atrophy rule, with owner approval
+  on 2026-08-14.

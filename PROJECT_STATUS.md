@@ -15,10 +15,9 @@ Top-level structure: the canonical documents (`PROJECT_BRIEF.md`, this file,
 `decisions/` tracked and empty except for their README files, and `workshop/`
 tracked with its README, template, ignore rule, and scratch placeholder.
 
-The project is fully assimilated: `AGENTS.md` plus the permanent parts carry
-everything the kit supplied, and the `TRISMEGISTUS.md` Atrophy Log is the
-record. For this 10.3.0 upgrade the kit was re-supplied, read, and verified;
-it is awaited for final removal pending owner confirmation.
+The project is fully assimilated: no `trismegistus/` kit copy remains, and
+`AGENTS.md` plus the permanent parts carry everything it supplied. The
+`TRISMEGISTUS.md` Atrophy Log records the 10.3.0 kit's re-supply and removal.
 
 The 10.3.0 review records no project-owned skills, no subprojects, no
 required `INDEX.md`, no standing goal, and no model restriction. Git
