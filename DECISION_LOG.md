@@ -167,3 +167,25 @@
   the re-supplied kit is removed after verification under the upgrade-time
   atrophy rule. No collection-specific material, download path, or new
   project-owned machinery is introduced.
+
+## D011 — Post-sweep audit finding declined: `git-workflow` already dual-surfaced
+
+- Status: Active
+- Date: 2026-08-21
+- Decision: No change made. The 2026-08-21 trismegistus 10.7.0 post-sweep
+  audit reported that this project declared `git-workflow: solo-main` on only
+  one durable surface (`AGENTS.md`) with no value declared in the stamp, the
+  10.5.0 "incomplete declaration" condition. Verification against the current
+  files shows the stamp's Git convention bullet already states that "this
+  project declares `solo-main`", so both surfaces carry the same explicit
+  value and the condition does not hold. The suggested repair (adding the line
+  to the stamp) would duplicate an existing declaration and was declined.
+- Rationale: The audit note is evidence, not authority on the repository's
+  present state, and instructs verification against current files before any
+  edit. The verified-clean sections of the audit (kit residue, inbox
+  invariant, Terminal State Check form) required no action.
+- Consequence: The audit note is preserved untracked at
+  `output/2026-08-21-trismegistus-10-7-0-post-sweep-audit.md`; the tracked
+  `decisions/` folder stays empty in this public template, and the source
+  workspace holds the canonical evidence. No stamp, instruction, or tooling
+  change results.
