@@ -1,13 +1,13 @@
 # trismegistus Provenance
 
-trismegistus-Version: 10.3.0
+trismegistus-Version: 10.7.0
 
 - **Role:** Public, content-free reference-collection template
 - **Origin archetype:** `reference_collection_foundation`, adapted for immutable
   directory-valued export sets
 - **Scaffolded:** not recorded (the original stamp carried no date, and the
   template's own audit rejects the dates involved as private-instance tokens)
-- **Last upgraded:** 2026-08-14
+- **Last upgraded:** 2026-08-21
 - **Source kit:** trismegistus deployable kit
 
 ## How To Read This
@@ -108,6 +108,11 @@ this non-code source collection. See `DECISION_LOG.md` D004.
 Parts of the copied `trismegistus/` folder removed as this project took over
 their function. Newest first.
 
+- [2026-08-21] Removed the re-supplied 10.7.0 kit in full under the
+  10.0.0 upgrade-time atrophy rule. The 10.4.0–10.6.x upgrade-procedure
+  changes and the 10.7.0 downloaded-input rule were reconciled into the
+  permanent guidance; no modified or unrecognized kit part was present. The
+  kit was gitignored and untracked, so this log records its removal.
 - [2026-08-14] Removed the re-supplied 10.3.0 kit in full under the
   10.0.0 upgrade-time atrophy rule, with owner approval. The 10.2.0 and 10.3.0
   deltas were assimilated into the permanent parts; `HANDOFF_PROTOCOL.md` was
@@ -133,6 +138,12 @@ their function. Newest first.
 
 ## Upgrade History
 
+- [2026-08-21] Upgraded 10.3.0 -> 10.7.0: adopted the 10.4.0 completion and
+  declaration-driven publication contract, 10.5.0 post-condition and inbox
+  invariant checks, 10.6.x terminal-state and reconciliation clarifications,
+  and 10.7.0 content validation for downloaded project input. This project has
+  no download path, so no retrofit was needed; the re-supplied kit was removed
+  after verification under the 10.0.0 upgrade-time atrophy rule.
 - [2026-08-14] Upgraded 10.1.0 -> 10.3.0: adopted 10.2.0 (Git publication
   policy made explicit — three values, existing `solo-main` preserved and
   consistent with the project's remote) and 10.3.0 (optional path-free sibling

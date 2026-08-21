@@ -108,6 +108,21 @@ In a filled instance:
   legitimately end with nothing built. A written-up slice carries every
   build-time decision explicitly, because the model that executes it may be
   weaker or cheaper than the one that planned it.
+- When this project treats a downloaded artifact as project input, content, not
+  transport, decides success. Before using, indexing, accepting a checksum as
+  input, or reporting it acquired, check its actual content against what it
+  claims to be: use signatures or container headers where they exist;
+  parsing, decoding, schema checks, or required markers for text and
+  structured formats; and explicit interstitial or error-page detection where
+  a server may return HTML in place of the intended artifact. HTTP status,
+  filename extension, existence, and non-zero size are observations, not
+  verdicts. Where acquisition and later verification are separate, use the
+  same acceptance criteria; reject or quarantine a wrong payload rather than
+  promoting or counting it as success, and report the source, intended
+  artifact, and failed check. Package managers and build tools keep their own
+  integrity models unless this project treats their output as downloaded
+  project input. This public template has no download path, so no retrofit is
+  needed here.
 - Work one approved roadmap slice at a time, scoped to its acceptance criteria.
 - A project-owned Agent Skill has one tracked canonical copy at
   `skills/<skill-name>/SKILL.md`; create the root `skills/` directory only when
@@ -220,6 +235,13 @@ default. A filled instance has its own no-remote `local-only` custody by
 standing convention and is never pushed at all.
 - "Commit completed slices" means local commits; it does not imply a branch or a
   PR.
+- An already-stamped trismegistus upgrade is complete only after its deltas are
+  adopted or deliberately declined, durable guidance is verified, redundant
+  reintroduced kit parts are removed and logged, the result is committed, the
+  current kit's Terminal State Check runs after that last commit, and
+  publication is resolved by this declaration. A deliberately preserved part
+  or unrelated pre-existing dirty state is reported with its path and reason;
+  an unperformed step or a stamp contradiction is corrected before completion.
 - **Never run `git clean -fdx`.** This project holds material that is untracked
   by design in `output/` and `workshop/scratch/`; git cannot restore it. Delete
   specific files by name, and remove build artifacts with a project command or

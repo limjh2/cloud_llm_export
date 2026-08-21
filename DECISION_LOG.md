@@ -144,3 +144,26 @@
   protocol heading was created. The re-supplied 10.3.0 kit was removed after
   verification under the 10.0.0 upgrade-time atrophy rule, with owner approval
   on 2026-08-14.
+
+## D010 — Trismegistus 10.7.0 upgrade applicability
+
+- Status: Active
+- Date: 2026-08-21
+- Decision: Upgrade this already-stamped template from trismegistus 10.3.0 to
+  10.7.0. Adopt the 10.4.0 explicit upgrade completion and publication
+  contract, the 10.5.0 post-condition and inbox-invariant checks, the 10.6.x
+  terminal-state and reconciliation clarifications, and the 10.7.0 rule that
+  downloaded project input must be validated by content rather than transport
+  success. This project has no download or acquisition path, so no retrofit is
+  needed. Do not add a download helper, checklist, or new protocol heading.
+- Rationale: The public template's own tooling works from locally supplied
+  files and header-only schemas; it does not fetch artifacts. Its existing
+  tracked inbox has no ignore rule, its `git-workflow: solo-main` declaration
+  agrees with the stamp and remote, and its no-sibling/no-skill choices remain
+  valid. The generic downloaded-input rule is still carried in `AGENTS.md` so
+  a future private instance does not mistake transport success, an extension,
+  presence, or size for content validation.
+- Consequence: `PROJECT_STATUS.md` and `TRISMEGISTUS.md` now identify 10.7.0;
+  the re-supplied kit is removed after verification under the upgrade-time
+  atrophy rule. No collection-specific material, download path, or new
+  project-owned machinery is introduced.

@@ -2,7 +2,7 @@
 
 > **PUBLIC TEMPLATE — NO EXPORTS**
 
-**Status:** Stable content-free template, on trismegistus 10.3.0
+**Status:** Stable content-free template, on trismegistus 10.7.0
 
 The reusable structure, empty TSV schemas, validator, publication audit, and
 blocking pre-push hook are present. No collection-specific state belongs here.
@@ -17,9 +17,13 @@ tracked with its README, template, ignore rule, and scratch placeholder.
 
 The project is fully assimilated: no `trismegistus/` kit copy remains, and
 `AGENTS.md` plus the permanent parts carry everything it supplied. The
-`TRISMEGISTUS.md` Atrophy Log records the 10.3.0 kit's re-supply and removal.
+`TRISMEGISTUS.md` Atrophy Log records the 10.7.0 kit's re-supply and removal.
 
-The 10.3.0 review records no project-owned skills, no subprojects, no
+The 10.7.0 upgrade adopted the current upgrade-completion and downloaded-input
+guidance. This public template has no network acquisition path or downloaded
+project input, so no content-validation retrofit was needed.
+
+The 10.7.0 review records no project-owned skills, no subprojects, no
 required `INDEX.md`, no standing goal, and no model restriction. Git
 publication policy is exclusively `solo-main`; no sibling family is declared.
 The project has no user interface, so the GUI, localization, and
